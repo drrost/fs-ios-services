@@ -12,10 +12,9 @@ import XCTest
 @available(OSX 10.15.0, *)
 class ServiceTrackTest: XCTestCase {
 
-
     // MARK: - Variables
 
-//    var sut: ServiceTrack!
+//    var sut: IServiceTrack!
 
     // MARK: - Tests routines
 
@@ -27,7 +26,7 @@ class ServiceTrackTest: XCTestCase {
 
     func testCreate() {
         // Given
-        let sut = FactoryService.trackService() as! ServiceTrack
+        let sut = FactoryService.trackService()
         let track = Track(String.asId())
 
         // When
@@ -39,7 +38,7 @@ class ServiceTrackTest: XCTestCase {
 
     func testFind() {
         // Given
-        let sut = FactoryService.trackService() as! ServiceTrack
+        let sut = FactoryService.trackService()
         var lastId = ""
         for _ in 0 ..< 10 {
             lastId = String.asId()
