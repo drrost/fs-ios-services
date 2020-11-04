@@ -7,16 +7,19 @@
 
 import Foundation
 
+public protocol IDataModel {
+}
+
 public protocol ICrud {
 
-    associatedtype ModelType
+    associatedtype ModelType: IDataModel
 
     func add(_ model: ModelType)
 
     func all() -> [ModelType]
 }
 
-public class Track {
+public class Track: IDataModel {
 }
 
 public protocol IServiceTrack: IService, ICrud where ModelType == Track {
