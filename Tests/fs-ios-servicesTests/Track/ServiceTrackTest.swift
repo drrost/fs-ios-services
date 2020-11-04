@@ -12,15 +12,53 @@ import XCTest
 @available(OSX 10.15.0, *)
 class ServiceTrackTest: XCTestCase {
 
-    func testCreate() {
 
+    // MARK: - Variables
+
+//    var sut: ServiceTrack!
+
+    // MARK: - Tests routines
+
+    override func setUp() {
+
+    }
+
+    // MARK: - Tests
+
+    func testCreate() {
         // Given
-        let service = FactoryService.trackService()
+        let sut = FactoryService.trackService() as! ServiceTrack
+        let track = Track(String.asId())
 
         // When
-        service.add(Track())
+        sut.add(track)
 
         // Then
-        XCTAssertEqual(1, service.all().count)
+        XCTAssertEqual(1, sut.all().count)
+    }
+
+    func testFind() {
+        // Given
+        let sut = FactoryService.trackService() as! ServiceTrack
+        var lastId = ""
+        for _ in 0 ..< 10 {
+            lastId = String.asId()
+            let track = Track(lastId)
+            sut.add(track)
+        }
+
+
+        // When
+        let track = sut.find(lastId)
+
+        // Then
+        XCTAssertEqual(lastId, track?.id)
+    }
+}
+
+extension String: Identifier {
+
+    static func asId() -> String {
+        UUID().uuidString
     }
 }
