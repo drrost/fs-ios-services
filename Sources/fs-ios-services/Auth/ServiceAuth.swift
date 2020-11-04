@@ -7,16 +7,12 @@
 
 import Foundation
 
-public protocol IService {
-
-}
-
-public protocol IAuthService: IService {
+public protocol IServiceAuth: IService {
 
     func login(_ login: String, _ password: String, _ completion: (Bool) -> Void)
 }
 
-class AuthService: IAuthService {
+class ServiceAuth: IServiceAuth {
 
     func login(_ login: String, _ password: String, _ completion: (Bool) -> Void) {
         completion(true)

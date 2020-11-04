@@ -9,7 +9,12 @@ import Foundation
 
 public class FactoryService {
 
-    public static func authService() -> IAuthService {
-        AuthService()
+    public static func authService() -> IServiceAuth {
+        ServiceAuth()
+    }
+
+    @available(OSX 10.15.0, *)
+    public static func trackService() -> some IServiceTrack {
+        ServiceTrack()
     }
 }
