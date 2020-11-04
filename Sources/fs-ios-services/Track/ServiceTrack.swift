@@ -36,7 +36,7 @@ public class Track: IDataModel {
     public var title: String
     public var artist: String
 
-    init(_ id: String, _ title: String = "", _ artist: String = "") {
+    public init(_ id: String, _ title: String = "", _ artist: String = "") {
         self.id = id
         self.title = title
         self.artist = artist
